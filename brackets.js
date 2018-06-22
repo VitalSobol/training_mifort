@@ -1,28 +1,23 @@
-let bracketsExample = '()(){}[{()}]()';
+module.exports = checkBrackets;
 let brackets = {
     ')' : '(',
     ']' : '[',
-    '}' : '{'
+    '>' : '<'
 };
-
-function correctBrackets(inputString){
+function checkBrackets(inputString){
     let stack = [];
     for (let i = 0; i <= inputString.length; i++){
-        if( inputString[i] === '(' ||  inputString[i] === '[' ||  inputString[i] === '{'){
+        if( inputString[i] === '(' ||  inputString[i] === '[' ||  inputString[i] === '<'){
             stack.push(inputString[i]);
         }
         if( brackets[inputString[i]]){
-            if(brackets[inputString[i]] === stack[stack.length - 1]){
-                stack.pop();
-            } else {
-                return console.log(false);
+            if(brackets[inputString[i]] !== stack.pop()){
+                return 0;
             }
         }
     }
     if(stack.length){
-        return console.log(false);
+        return 0;
     }
-    return console.log(true);
+    return 1;
 }
-
-correctBrackets(bracketsExample);

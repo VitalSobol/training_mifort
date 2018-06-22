@@ -1,0 +1,25 @@
+{
+  "name": "homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brackets.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitalSobol/training_mifort.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitalSobol/training_mifort/issues"
+  },
+  "homepage": "https://github.com/VitalSobol/training_mifort#readme",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  }
+}
