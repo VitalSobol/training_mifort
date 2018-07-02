@@ -1,5 +1,5 @@
 const assert = require('assert');
-const checkBrackets = require('./../brackets')
+const checkBrackets = require('../brackets')
 
 describe('Array', function() {
     describe('checkBrackets', function() {
