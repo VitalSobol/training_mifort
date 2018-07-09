@@ -19,7 +19,7 @@
     "url": "https://github.com/VitalSobol/training_mifort/issues"
   },
   "homepage": "https://github.com/VitalSobol/training_mifort#readme",
-  "dependencies": {
+  "devDependencies": {
     "mocha": "^5.2.0"
   }
 }

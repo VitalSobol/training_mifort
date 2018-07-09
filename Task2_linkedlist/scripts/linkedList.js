@@ -15,19 +15,10 @@ class LinkedList {
       return null;
     }
     let newNode = new Node(value);
-    let currentNode = this.head;
+    newNode.next = this.head;
+    this.head = newNode;
     this.length++;
 
-    if (!currentNode) {
-      this.head = newNode;
-      return newNode;
-    }
-
-    while (currentNode.next) {
-      currentNode = currentNode.next;
-    }
-
-    currentNode.next = newNode;
     return newNode;
   }
 
