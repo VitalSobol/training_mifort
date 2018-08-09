@@ -5,17 +5,28 @@ class Cube {
     }
 }
 
-let maxPriceForCSV = [{
-    'cubes': '',
-    'BF': '',
-    'GA': '',
-    'Tree': '',
-    'DP': '',
-}];
+class CSV {
+  constructor(){
+    this.cubesP = '';
+    this.BFp = '';
+    this.GAp = '';
+    this.Tp = '';
+    this.DPp = '';
+    this.cubesT = '';
+    this.BFt ='';
+    this.GAt = '';
+    this.Tt = '';
+    this.DPt = '';
+  }
+}
+const limitWeight = 15;
+let maxPriceForCSV = [];
 
-function generateCubes(countElements, limitWeight) {
+function generateCubes(countElements, limitWeight, iteration) {
     let listCubes = [];
-    maxPriceForCSV[0]['cubes'] = countElements;
+    maxPriceForCSV[iteration] = new CSV();
+    maxPriceForCSV[iteration]['cubesP'] = countElements;
+    maxPriceForCSV[iteration]['cubesT'] = countElements;
     for (let i = 0; i < countElements; i++) {
         let price = +Math.floor(Math.random() * 100);
         let weight = +Math.floor(Math.random() * (limitWeight + 1));
@@ -43,12 +54,8 @@ function bruteForce(limit, list) {
         }
 
     }
-    maxPriceForCSV[0]['BF'] = priceMax;
+    return priceMax;
 }
-
-const limitWeight = 15;
-let listCubes = generateCubes(5, limitWeight);
-bruteForce(limitWeight, listCubes);
 
 function convertArrayOfObjectsToCSV(args) {
     let result, ctr, keys, columnDelimiter, lineDelimiter, data;
@@ -100,4 +107,19 @@ function downloadCSV(args) {
     link.setAttribute('href', data);
     link.setAttribute('download', filename);
     link.click();
+}
+
+function startExperiment(){
+  let iteration = 0;
+  for(let i = 5; i <= 20; i = i + 5){
+    let listCubes = generateCubes(i, limitWeight, iteration);
+
+    let BFt0 = performance.now();
+    maxPriceForCSV[iteration]['BFp'] = bruteForce(limitWeight, listCubes);
+    let BFt1 = performance.now();
+    maxPriceForCSV[iteration]['BFt'] = (BFt1 - BFt0).toFixed();
+
+    iteration++;
+  }
+  downloadCSV({ filename: "cubes.csv" });
 }
